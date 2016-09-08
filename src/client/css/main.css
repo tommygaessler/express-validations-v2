@@ -3,6 +3,46 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+h1 {
+  display: inline;
+}
+
+.container {
+  position: relative;
+}
+
 a {
   color: #00B7FF;
+}
+
+td {
+  font-size: 23px;
+}
+
+th {
+  font-size: 25px;
+}
+
+input.form-control {
+  font-size: 30px;
+  padding: 10px 15px;
+  height: 66px;
+}
+
+.new {
+  position: absolute;
+  right: 15px;
+  font-size: 39px;
+}
+
+.back {
+  font-size: 30px;
+}
+
+.submit {
+  font-size: 30px;
+}
+
+button.btn {
+  margin-bottom: 15px;
 }
