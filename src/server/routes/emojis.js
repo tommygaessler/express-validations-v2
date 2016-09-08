@@ -20,7 +20,7 @@ router.get('/new', (req, res, next) => {
   res.render('new');
 });
 
-router.post('/new', validations.verify, (req, res, next) => {
+router.post('/new', validations.verifyNew, (req, res, next) => {
   const emoji = req.body.emoji;
   const emotion = req.body.emotion;
 
@@ -61,10 +61,7 @@ router.put('/edit/:id', validations.verifyEdit, (req, res, next) => {
     }
   })
   .catch((error) => {
-    res.status(500).json({
-      status: 'errror',
-      message: `${id} does not exist`
-    });
+    return next(error);
   });
 });
 

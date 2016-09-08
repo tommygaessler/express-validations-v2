@@ -1,6 +1,6 @@
 const knex = require('../db/knex');
 
-function verify(req, res, next) {
+function verifyNew(req, res, next) {
   // container for all errors
 
   const errors = [];
@@ -63,8 +63,10 @@ function verifyEdit(req, res, next) {
   if (errors.length) {
     // re-render page if there are errors
     const renderObject = {};
+
     renderObject.errors = errors;
-    return res.render('emoji', renderObject);
+    console.log('hey', renderObject.errors);
+    return res.render('emojis', renderObject);
   } else {
     // send to next middleware
     return next();
@@ -88,6 +90,6 @@ function isUnique(column, value, callback) {
 }
 
 module.exports = {
-  verify,
+  verifyNew,
   verifyEdit
 };
