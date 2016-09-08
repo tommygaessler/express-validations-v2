@@ -16,9 +16,11 @@
     {% endif %}
     <form method="post" action="/emojis/new">
       <div class="form-group">
-        <input type="text" class="form-control" id="emoji" placeholder="contol command space" name="emoji" autofocus>
+        <label for="emoji">Emoji</label>
+        <input type="text" class="form-control" id="emoji" placeholder="(contol command space)" name="emoji" autofocus>
       </div>
       <div class="form-group">
+        <label for="emotion">Emotion</label>
         <input type="text" class="form-control" id="emotion" placeholder="Cool" name="emotion">
       </div>
       <button type="submit" class="btn btn-success btn-block submit">✅</button>

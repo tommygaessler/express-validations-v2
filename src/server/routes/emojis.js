@@ -36,4 +36,60 @@ router.post('/new', validations.verify, (req, res, next) => {
   });
 });
 
+router.put('/edit/:id', validations.verifyEdit, (req, res, next) => {
+  const id = parseInt(req.params.id);
+  const editedEmoji = req.body.emoji;
+  const editedEmotion = req.body.emotion;
+  knex('emojis')
+  .update({
+    emoji: editedEmoji,
+    emotion: editedEmotion
+  })
+  .where('id', id)
+  .returning('*')
+  .then((emoji) => {
+    if (emoji.length) {
+      res.status(200).json({
+        status: 'success',
+        message: `${emoji[0].id} has been updated`
+      });
+    } else {
+      res.status(404).json({
+        status: 'errror',
+        message: `${emoji[0].id} does not exist`
+      });
+    }
+  })
+  .catch((error) => {
+    res.status(500).json({
+      status: 'errror',
+      message: `${id} does not exist`
+    });
+  });
+});
+
+router.delete('/delete/:id', (req, res, next) => {
+  const id = req.params.id;
+  knex('emojis').del().where('id', id).returning('*')
+  .then((emoji) => {
+    if (!emoji.length) {
+      res.status(500).json({
+        status: 'fail',
+        message: `${id} does not exist`
+      });
+    } else if (emoji.length) {
+      res.status(200).json({
+        status: 'success',
+        message: `${id} is deleted`
+      });
+    }
+  })
+  .catch((error) => {
+    res.status(500).json({
+      status: 'error',
+      message: `${id} does not exist`
+    });
+  });
+});
+
 module.exports = router;

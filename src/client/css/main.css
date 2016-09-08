@@ -35,6 +35,10 @@ input.form-control {
   font-size: 39px;
 }
 
+.new:hover {
+  text-decoration: none;
+}
+
 .back {
   font-size: 30px;
 }
@@ -45,4 +49,11 @@ input.form-control {
 
 button.btn {
   margin-bottom: 15px;
+}
+
+.delete, .edit {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  height: 23px;
 }
