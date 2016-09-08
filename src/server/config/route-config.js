@@ -5,10 +5,10 @@
   routeConfig.init = function (app) {
 
     // *** routes *** //
-    const routes = require('../routes/index');
+    const emojis = require('../routes/emojis');
 
     // *** register routes *** //
-    app.use('/', routes);
+    app.use('/emojis', emojis);
 
   };
 
